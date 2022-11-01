@@ -3,23 +3,26 @@ package tests;
 import static org.junit.Assert.*;
 
 import org.junit.After;
-import org.junit.AfterClass;
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 
+import data.Crypto;
+
 public class testCrypto {
-
-	@BeforeClass
-	public static void setUpBeforeClass() throws Exception {
-	}
-
-	@AfterClass
-	public static void tearDownAfterClass() throws Exception {
-	}
+	
+	private Crypto crypto;
+	private Integer ID = 1;
+	private String name = "Bitcoin";
+	private String symbol = "BTC";
+	private String slug = "bitcoin";
+	private String date = "2022-11-01T19:19:00Z";
+	private Float supp = 69991334.8025f;
+	
 
 	@Before
 	public void setUp() throws Exception {
+		
+		crypto = new Crypto(ID, name, symbol, slug, date, supp);
 	}
 
 	@After
@@ -28,57 +31,84 @@ public class testCrypto {
 
 	@Test
 	public void testCrypto() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testGetName() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testSetName() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testGetSupp() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testSetSupp() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testGetSymbol() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testSetSymbol() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testGetSlug() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testSetSlug() {
-		fail("Not yet implemented");
+		assertNotNull(crypto);
+		assertEquals(ID, crypto.getID());
+		assertEquals(name, crypto.getName());
+		assertEquals(symbol, crypto.getSymbol());
+		assertEquals(slug, crypto.getSlug());
+		assertEquals(date, crypto.getDate());
+		assertEquals(supp, crypto.getSupp(), 0.00f);
 	}
 
 	@Test
 	public void testGetID() {
-		fail("Not yet implemented");
+		assertEquals(ID, crypto.getID());
 	}
 
 	@Test
 	public void testSetID() {
-		fail("Not yet implemented");
+		Integer id = 5;
+		assertEquals(ID, crypto.getID());
+		crypto.setID(id);
+		assertEquals(id, crypto.getID());
+		
+		
+	}
+
+	@Test
+	public void testGetName() {
+		assertEquals(name, crypto.getName());
+	}
+
+	@Test
+	public void testSetName() {
+		crypto.setName("Pancake");
+		assertEquals("Pancake", crypto.getName());
+	}
+
+	@Test
+	public void testGetSymbol() {
+		assertEquals(symbol, crypto.getSymbol());
+	}
+
+	@Test
+	public void testSetSymbol() {
+		crypto.setSymbol("CAKE");
+		assertEquals("CAKE", crypto.getSymbol());
+	}
+
+	@Test
+	public void testGetSlug() {
+		assertEquals(slug, crypto.getSlug());
+	}
+
+	@Test
+	public void testSetSlug() {
+		crypto.setSlug("pancake");
+		assertEquals("pancake", crypto.getSlug());
+	}
+
+	@Test
+	public void testGetDate() {
+		assertEquals(date, crypto.getDate());
+	}
+
+	@Test
+	public void testSetDate() {
+		crypto.setDate("2022-11-01T19:19:00Z");
+		assertEquals("2022-11-01T19:19:00Z", crypto.getDate());
+	}
+
+	@Test
+	public void testGetSupp() {
+		assertEquals(supp, crypto.getSupp(), 0.00f);
+		
+	}
+
+	@Test
+	public void testSetSupp() {
+		crypto.setSupp(8765.0988f);
+		assertEquals(8765.0988f, crypto.getSupp(), 0.0f);
 	}
 
 }
