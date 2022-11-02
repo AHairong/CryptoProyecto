@@ -3,23 +3,21 @@ package tests;
 import static org.junit.Assert.*;
 
 import org.junit.After;
-import org.junit.AfterClass;
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 
+import data.Persona;
+
 public class testPersona {
-
-	@BeforeClass
-	public static void setUpBeforeClass() throws Exception {
-	}
-
-	@AfterClass
-	public static void tearDownAfterClass() throws Exception {
-	}
+	
+	private Persona per;
+	private String name = "Martin";
+	private String apellidos = "Rivas";
+	private String email = "email@gmail.com";
 
 	@Before
 	public void setUp() throws Exception {
+		per = new Persona(name, apellidos, email);
 	}
 
 	@After
@@ -28,47 +26,44 @@ public class testPersona {
 
 	@Test
 	public void testPersona() {
-		fail("Not yet implemented");
+		
+		assertNotNull(per);
+		assertEquals(name, per.getName());
+		assertEquals(apellidos, per.getApellidos());
+		assertEquals(email, per.getEmail());
 	}
 
 	@Test
 	public void testGetName() {
-		fail("Not yet implemented");
+		assertEquals(name, per.getName());
 	}
 
 	@Test
 	public void testSetName() {
-		fail("Not yet implemented");
+		per.setName("Mario");
+		assertEquals("Mario", per.getName());
 	}
 
 	@Test
 	public void testGetApellidos() {
-		fail("Not yet implemented");
+		assertEquals(apellidos, per.getApellidos());
 	}
 
 	@Test
 	public void testSetApellidos() {
-		fail("Not yet implemented");
+		per.setApellidos("Ramos");
+		assertEquals("Ramos", per.getApellidos());
+		
 	}
 
 	@Test
-	public void testGetUser() {
-		fail("Not yet implemented");
+	public void testGetEmail() {
+		assertEquals(email, per.getEmail());
 	}
 
 	@Test
-	public void testSetUser() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testGetContraseña() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testSetContraseña() {
-		fail("Not yet implemented");
+	public void testSetEmail() {
+		per.setEmail("gmai@gmail.com");
 	}
 
 }

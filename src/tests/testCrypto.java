@@ -31,6 +31,7 @@ public class testCrypto {
 
 	@Test
 	public void testCrypto() {
+		
 		assertNotNull(crypto);
 		assertEquals(ID, crypto.getID());
 		assertEquals(name, crypto.getName());

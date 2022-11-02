@@ -4,15 +4,15 @@ public class Persona {
 	
 	private String name;
 	private String apellidos;
-	private String user;
-	private String contraseña;
+	private String email;
 	
-	public Persona(String name, String apellidos, String user, String contraseña) {
-		super();
+	
+	public Persona(String name, String apellidos, String email) {
+		
 		this.name = name;
 		this.apellidos = apellidos;
-		this.user = user;
-		this.contraseña = contraseña;
+		this.email = email;
+		
 	}
 
 	public String getName() {
@@ -31,21 +31,15 @@ public class Persona {
 		this.apellidos = apellidos;
 	}
 
-	public String getUser() {
-		return user;
+	public String getEmail() {
+		return email;
 	}
 
-	public void setUser(String user) {
-		this.user = user;
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
-	public String getContraseña() {
-		return contraseña;
-	}
-
-	public void setContraseña(String contraseña) {
-		this.contraseña = contraseña;
-	}
+	
 	
 	
 

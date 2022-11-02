@@ -1,6 +1,7 @@
 package data;
 
 public class Crypto {
+	
 	private Integer ID;
 	private String name;
 	private String symbol;
