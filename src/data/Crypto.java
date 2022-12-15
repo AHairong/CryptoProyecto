@@ -1,89 +1,41 @@
 package data;
 
+import java.util.regex.Pattern;
+
 public class Crypto {
+	private String tipo;
+	private String cod;
 	
-	private Integer ID;
-	private String name;
-	private String symbol;
-	private String slug;
-	private String date;
-	private Float supp;
-	
-	
-	public Crypto(Integer iD,String name, String symbol, String slug, String date, Float supp) {
+	public Crypto (String tipo, String cod) {
 		
-		this.name = name;
-		this.supp = supp;
-		this.symbol = symbol;
-		this.slug = slug;
-		this.ID = iD;
-		this.date =  date; // Tengo que mejorar el código para que solo permita un formato de string
+		if(tipo == null){
+			throw new NullPointerException("El tipo de criptomoneda nulo");
+		}
+		// Expresión regular que no permite la insercción de ningun codigó con letras minusculas o que este compuesto de mas de una palabra
+		
+		Pattern pattern = Pattern.compile("^[A-Z]+$");
+		if(cod != null && pattern.matcher(cod).matches()){
+			this.cod = cod;
+		}	    
+
+		this.tipo = tipo;
+		
 	}
 
-
-	public Integer getID() {
-		return ID;
+	public String getTipo() {
+		return tipo;
 	}
 
-
-	public void setID(Integer iD) {
-		ID = iD;
+	public void setTipo(String tipo) {
+		this.tipo = tipo;
 	}
 
-
-	public String getName() {
-		return name;
+	public String getCod() {
+		return cod;
 	}
 
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-
-	public String getSymbol() {
-		return symbol;
-	}
-
-
-	public void setSymbol(String symbol) {
-		this.symbol = symbol;
-	}
-
-
-	public String getSlug() {
-		return slug;
-	}
-
-
-	public void setSlug(String slug) {
-		this.slug = slug;
-	}
-
-
-	public String getDate() {
-		return date;
-	}
-
-
-	public void setDate(String date) {
-		this.date = date;
-	}
-
-
-	public Float getSupp() {
-		return supp;
-	}
-
-
-	public void setSupp(Float supp) {
-		this.supp = supp;
+	public void setCod(String cod) {
+		this.cod = cod;
 	}
 	
-	
-
-
-	
-	
-
 }
