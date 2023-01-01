@@ -2,19 +2,16 @@ package tests;
 
 import static org.junit.Assert.*;
 
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
-import java.util.Date;
 
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import data.Crypto;
 import data.Registro;
 
 public class testRegistro {
-	
+	private int id = 1;
 	private Registro registro;
 	private Integer rank = 10;
 	private String nombreCrypto = "Cardano";
@@ -27,10 +24,12 @@ public class testRegistro {
 	private double percentD= 1.6;
 	private double percentS= 1.7;
 	private LocalDate fecha;
+
 	@Before
 	public void setUp() throws Exception {
 		fecha = LocalDate.of(2022, 12, 5);
-		registro = new Registro(rank, nombreCrypto, cod, cap, precio, circulacion, vol, percentH, percentD, percentS, fecha);
+		registro = new Registro();
+		
 	}
 
 	@After
@@ -38,159 +37,135 @@ public class testRegistro {
 	}
 
 	@Test
-	public void testRegistro() {
-		assertNotNull(registro);
-		assertEquals(rank, registro.getRank());
-		assertEquals(nombreCrypto, registro.getNombreCrypto());
-		assertEquals(cod, registro.getCodCrypto());
-		assertEquals(cap, registro.getCap(), 0.00d);
-		assertEquals(precio, registro.getPrecio(), 0.00d);
-		assertEquals(circulacion, registro.getCirculacion(), 0.00d );
-		assertEquals(vol, registro.getVol(), 0.00d);
-		assertEquals(percentH, registro.getPercentH(), 0.00d);
-		assertEquals(percentD, registro.getPercentD(), 0.00d);
-		assertEquals(percentS, registro.getPercentS(), 0.00d);
-		assertEquals(fecha, registro.getFecha());
+	public void testGetId() {
+		registro.setId(1);
+		assertEquals(1, registro.getId());
 		
+	}
+
+	@Test
+	public void testSetId() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	public void testRegistro() {
+		fail("Not yet implemented");
 	}
 
 	@Test
 	public void testGetRank() {
-		assertEquals(rank, registro.getRank());
+		fail("Not yet implemented");
 	}
 
 	@Test
 	public void testSetRank() {
-		registro.setRank(5);
-		assertEquals(5, registro.getRank(),0);
-		
+		fail("Not yet implemented");
 	}
 
 	@Test
 	public void testGetNombreCrypto() {
-		assertEquals(nombreCrypto, registro.getNombreCrypto());
+		fail("Not yet implemented");
 	}
 
 	@Test
 	public void testSetNombreCrypto() {
-		
-		registro.setNombreCrypto("Polygon");
-		assertEquals("Polygon", registro.getNombreCrypto());
+		fail("Not yet implemented");
 	}
 
 	@Test
 	public void testGetCodCrypto() {
-		assertEquals(cod, registro.getCodCrypto());
-		
+		fail("Not yet implemented");
 	}
 
 	@Test
 	public void testSetCodCrypto() {
-		registro.setCodCrypto("MATIC");
-		assertEquals("MATIC", registro.getCodCrypto());
+		fail("Not yet implemented");
 	}
 
 	@Test
 	public void testGetCap() {
-		assertEquals(cap, registro.getCap(), 0.00d);
+		fail("Not yet implemented");
 	}
 
 	@Test
 	public void testSetCap() {
-		registro.setCap(2.1);
-		assertEquals(2.1, registro.getCap(), 0.00d);
+		fail("Not yet implemented");
 	}
 
 	@Test
 	public void testGetPrecio() {
-		assertEquals(precio, registro.getPrecio(), 0.00d);
+		fail("Not yet implemented");
 	}
 
 	@Test
 	public void testSetPrecio() {
-		registro.setPrecio(2.2);
-		assertEquals(2.2, registro.getPrecio(), 0.00d);
+		fail("Not yet implemented");
 	}
 
 	@Test
 	public void testGetCirculacion() {
-		assertEquals(circulacion, registro.getCirculacion(), 0.00d );
+		fail("Not yet implemented");
 	}
 
 	@Test
 	public void testSetCirculacion() {
-		registro.setCirculacion(2.3);
-		assertEquals(2.3, registro.getCirculacion(), 0.00d);
+		fail("Not yet implemented");
 	}
 
 	@Test
 	public void testGetVol() {
-		assertEquals(vol, registro.getVol(), 0.00d);
-	
+		fail("Not yet implemented");
 	}
 
 	@Test
 	public void testSetVol() {
-		registro.setVol(2.4);
-		assertEquals(2.4, registro.getVol(), 0.00000d);
+		fail("Not yet implemented");
 	}
 
 	@Test
 	public void testGetPercentH() {
-		assertEquals(percentH, registro.getPercentH(), 0.0000d);
+		fail("Not yet implemented");
 	}
 
 	@Test
 	public void testSetPercentH() {
-		registro.setPercentH(2.5);
-		assertEquals(2.5, registro.getPercentH(), 0.00d);
+		fail("Not yet implemented");
 	}
 
 	@Test
 	public void testGetPercentD() {
-		assertEquals(percentD, registro.getPercentD(), 0.00d);
+		fail("Not yet implemented");
 	}
 
 	@Test
 	public void testSetPercentD() {
-		registro.setPercentD(2.6);
-		assertEquals(2.6, registro.getPercentD(), 0.00d);
+		fail("Not yet implemented");
 	}
 
 	@Test
 	public void testGetPercentS() {
-		assertEquals(percentS, registro.getPercentS(), 0.00d);
+		fail("Not yet implemented");
 	}
 
 	@Test
 	public void testSetPercentS() {
-		registro.setPercentS(2.7);
-		assertEquals(2.7, registro.getPercentS(), 0.00d);
+		fail("Not yet implemented");
 	}
 
 	@Test
 	public void testGetFecha() {
-		assertEquals(fecha, registro.getFecha());
+		fail("Not yet implemented");
 	}
 
 	@Test
 	public void testSetFecha() {
-		try {
-			new Registro(1, "Cardano", "ADA", 1,0,2,3,4,7,8, null);
-			fail( "NullPointer no generado" );
-		} catch (NullPointerException e) {
-		}
-		LocalDate fecha = LocalDate.of(2021, 5, 12);
-		registro.setFecha(fecha);
-		assertEquals(fecha, registro.getFecha() );
-		
+		fail("Not yet implemented");
 	}
 
 	@Test
 	public void testToString() {
-		String toString = String.format("%s: %.00f", nombreCrypto, precio);
-		
-		assertEquals(toString, registro.toString());
+		fail("Not yet implemented");
 	}
 
 }

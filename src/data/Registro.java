@@ -1,12 +1,15 @@
 package data;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
+import java.util.Date;
+import java.util.StringTokenizer;
 
 
 public class Registro {
+	
+	private int id;
 	private Integer rank;
-	private String nombreCrypto;
 	private String codCrypto;
 	private double cap;
 	private double precio;
@@ -15,45 +18,25 @@ public class Registro {
 	private double percentH;
 	private double percentD;
 	private double percentS;
-	private  LocalDate fecha;
+	private Date fecha;
+	private int id_admin;
 	
-	public Registro(Integer rank, String nombreCrypto, String codCrypto, double cap, double precio, double circulacion,
-			double vol, double percentH, double percentD, double percentS, LocalDate fecha) {
-		super();
-		this.rank = rank;
-		this.nombreCrypto = nombreCrypto;
-		this.codCrypto = codCrypto;
-		this.cap = cap;
-		this.precio = precio;
-		this.circulacion = circulacion;
-		this.vol = vol;
-		this.percentH = percentH;
-		this.percentD = percentD;
-		this.percentS = percentS;
-		if(fecha == null){	//Si la fecha es nula
-			throw new NullPointerException();
-		}
-		this.fecha = fecha;
+
+	public int getId() {
+		return id;
 	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
 	
-	public Registro()
-	{
-		
-	}
 	public Integer getRank() {
 		return rank;
 	}
 
 	public void setRank(Integer rank) {
 		this.rank = rank;
-	}
-
-	public String getNombreCrypto() {
-		return nombreCrypto;
-	}
-
-	public void setNombreCrypto(String nombreCrypto) {
-		this.nombreCrypto = nombreCrypto;
 	}
 
 	public String getCodCrypto() {
@@ -120,21 +103,60 @@ public class Registro {
 		this.percentS = percentS;
 	}
 
-	public LocalDate getFecha() {
+	public Date getFecha() {
 		return fecha;
 	}
 
-	public void setFecha(LocalDate fecha) {
-		this.fecha = fecha;
+	public void setFecha(String fecha) {
+		 SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+
+		 try {
+		   this.fecha = formatter.parse(fecha);
+		 } catch (ParseException e) {
+		   e.printStackTrace();
+		 }
+		
+	}
+	public int getId_admin() {
+		return id_admin;
+	}
+
+	public void setId_admin(int id_admin) {
+		this.id_admin = id_admin;
 	}
 
 	@Override
 	public String toString() {
 		
 		
-		return String.format("%s: %.00f", nombreCrypto, precio); 
+		return String.format("%s: %.00f", codCrypto, precio); 
 		
 	}
+	
+	//Crea un Registro a partir de una cadena de texto separada por comas.
+	public static Registro parseCSV(String csvString) {
+		if (csvString != null && !csvString.isBlank()) {		
+			StringTokenizer tokenizer = new StringTokenizer(csvString, ",");
+				
+			Registro reg = new Registro();
+				
+			reg.setRank(Integer.valueOf(tokenizer.nextToken()));
+			tokenizer.nextToken();
+			reg.setCodCrypto(tokenizer.nextToken());
+			reg.setCap(Double.valueOf(tokenizer.nextToken()));
+			reg.setPrecio(Double.valueOf(tokenizer.nextToken()));
+			reg.setCirculacion(Double.valueOf(tokenizer.nextToken()));
+			reg.setVol(Double.valueOf(tokenizer.nextToken()));
+			reg.setPercentH(Double.valueOf(tokenizer.nextToken()));
+			reg.setPercentD(Double.valueOf(tokenizer.nextToken()));
+			reg.setPercentS(Double.valueOf(tokenizer.nextToken()));
+			reg.setFecha(tokenizer.nextToken());
+				
+			return reg;
+			} else {
+				return null;
+			}
+		}
 	
 	
 	

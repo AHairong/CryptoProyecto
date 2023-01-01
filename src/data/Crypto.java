@@ -1,27 +1,13 @@
 package data;
 
+import java.util.StringTokenizer;
 import java.util.regex.Pattern;
 
 public class Crypto {
 	private String tipo;
 	private String cod;
 	
-	public Crypto (String tipo, String cod) {
-		
-		if(tipo == null){
-			throw new NullPointerException("El tipo de criptomoneda nulo");
-		}
-		// Expresión regular que no permite la insercción de ningun codigó con letras minusculas o que este compuesto de mas de una palabra
-		
-		Pattern pattern = Pattern.compile("^[A-Z]+$");
-		if(cod != null && pattern.matcher(cod).matches()){
-			this.cod = cod;
-		}	    
-
-		this.tipo = tipo;
-		
-	}
-
+	
 	public String getTipo() {
 		return tipo;
 	}
@@ -35,7 +21,33 @@ public class Crypto {
 	}
 
 	public void setCod(String cod) {
-		this.cod = cod;
+		Pattern pattern = Pattern.compile("^[A-Z]+$");
+		if(cod != null && pattern.matcher(cod).matches()){
+			this.cod = cod;
+		}	    
+	}
+	//Crea una Crypto a partir de una cadena de texto separada por comas.
+	public static Crypto parseCSV(String csvString) {
+		if (csvString != null && !csvString.isBlank()) {		
+			StringTokenizer tokenizer = new StringTokenizer(csvString, ",");	
+			Crypto c = new Crypto();		
+			tokenizer.nextToken();
+			c.setTipo(tokenizer.nextToken());
+			c.setCod(tokenizer.nextToken());
+			tokenizer.nextToken();
+			tokenizer.nextToken();
+			tokenizer.nextToken();
+			tokenizer.nextToken();
+			tokenizer.nextToken();
+			tokenizer.nextToken();
+			tokenizer.nextToken();
+			tokenizer.nextToken();
+			
+			return c;
+				
+		} else {
+			return null;
+		}
 	}
 	
 }

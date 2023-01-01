@@ -4,17 +4,14 @@ import java.util.regex.Pattern;
 
 public class Admin {
 	
-	private Integer id;
+	private int id;
 	private String nom;
 	private String email;
 	private String passw;
 	
-	public Admin (Integer id, String nom , String email, String passw) {
+	public Admin (int id, String nom , String email, String passw) {
 		
 		
-		if(id == null){
-			throw new NullPointerException("Id es nulo");
-		}
 		if(nom == null){
 			throw new NullPointerException("Nom es nulo");
 		}
@@ -28,9 +25,15 @@ public class Admin {
 		Pattern pattern = Pattern.compile("^[A-Za-z0-9+_.-]+@(.+)$");
 		if(email != null && pattern.matcher(email).matches()){
 			this.email = email;
-		}	    
+		}	
+	
 				
 	}
+	public Admin () {
+
+				
+	}
+
 
 	public Integer getId() {
 		return id;
@@ -53,7 +56,10 @@ public class Admin {
 	}
 
 	public void setEmail(String email) {
-		this.email = email;
+		Pattern pattern = Pattern.compile("^[A-Za-z0-9+_.-]+@(.+)$");
+		if(email != null && pattern.matcher(email).matches()){
+			this.email = email;
+		}
 	}
 
 	public String getPassw() {
