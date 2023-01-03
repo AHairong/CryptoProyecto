@@ -10,6 +10,7 @@ public class Registro {
 	
 	private int id;
 	private Integer rank;
+	private String nomCrypto;
 	private String codCrypto;
 	private double cap;
 	private double precio;
@@ -21,6 +22,19 @@ public class Registro {
 	private Date fecha;
 	private int id_admin;
 	
+	
+
+	public String getNomCrypto() {
+		return nomCrypto;
+	}
+
+	public void setNomCrypto(String nomCrypto) {
+		this.nomCrypto = nomCrypto;
+	}
+
+	public void setFecha(Date fecha) {
+		this.fecha = fecha;
+	}
 
 	public int getId() {
 		return id;
@@ -108,7 +122,7 @@ public class Registro {
 	}
 
 	public void setFecha(String fecha) {
-		 SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+		 SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
 
 		 try {
 		   this.fecha = formatter.parse(fecha);
@@ -141,7 +155,7 @@ public class Registro {
 			Registro reg = new Registro();
 				
 			reg.setRank(Integer.valueOf(tokenizer.nextToken()));
-			tokenizer.nextToken();
+			reg.setNomCrypto(tokenizer.nextToken());
 			reg.setCodCrypto(tokenizer.nextToken());
 			reg.setCap(Double.valueOf(tokenizer.nextToken()));
 			reg.setPrecio(Double.valueOf(tokenizer.nextToken()));

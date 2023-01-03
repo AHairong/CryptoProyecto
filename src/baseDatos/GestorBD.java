@@ -22,8 +22,6 @@ import java.io.IOException;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
-
-import data.Crypto;
 import data.Registro;
 
 public class GestorBD {
@@ -37,10 +35,11 @@ public class GestorBD {
 	private String databaseFile;
 	private String connectionString;
 	
+	
 	private static Logger logger = Logger.getLogger(GestorBD.class.getName());
 	
 	public GestorBD() {
-		
+
 		try (FileInputStream fis = new FileInputStream("conf/logger.properties")) {
 			//Inicialización del Logger
 			LogManager.getLogManager().readConfiguration(fis);
@@ -59,27 +58,42 @@ public class GestorBD {
 			logger.warning(String.format("Error al cargar el driver de BBDD: %s", ex.getMessage()));
 		}
 	}
+	private static Connection con;
+
+	public Connection initBD() {
+		try {
+			
+				Class.forName(driverName);
+			con=DriverManager.getConnection(databaseFile);
+		} catch (ClassNotFoundException  e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return con;
+		
+	}
+
+	/**
+	 * Metodo que cierra la conexion con la BBDD
+	 */
+	public static void closeBD() {
+		if(con!=null) {
+			try {
+				con.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+	}
 	
 	/**
 	 * Inicializa la BBDD leyendo los datos de los ficheros CSV 
 	 */
-	/*public void initilizeFromCSV() {
-		//Sólo se inicializa la BBDD si la propiedad initBBDD es true.
-		if (properties.get("loadCSV").equals("true")) {
-			//Se borran los datos, si existía alguno
-			this.borrarDatos();
-			
-			//Se leen los registros del CSV
-			List<Registro> registros = this.loadCSVRegistros();
-			//Se insertan los personajes en la BBDD
-			this.insertarRegistros(registros.toArray(new Registro[registros.size()]));
-			//Isnsertarregistros lee registros y añade id de admin
-			
-			
-			//Se insertan los comics en la BBDD
-			this.insertarComic(comics.toArray(new C[comics.size()]));				
-		}
-	}*/
+	
 	
 	public void crearBBDD() {
 		
@@ -193,7 +207,7 @@ public class GestorBD {
 	private int logIn (String nombre, String passw) {
 		Integer id = null;
 		String sql = "SELECT id FROM Admin WHERE nombre = '"+nombre+"' and passw = '"+passw+"'";
-		
+		//Hacer esto con prepare statement 
 		try (Connection con = DriverManager.getConnection(connectionString);
 			 PreparedStatement pStmt = con.prepareStatement(sql);
 				
@@ -203,18 +217,16 @@ public class GestorBD {
 			if (rs.next()) {
 				id = rs.getInt("id");
 				logger.info(String.format("Un admin coincide con estos datos"));
+				return id;
 			}
-			else {
-				logger.info(String.format("No existe un admin coincidente"));
-			}
-			
 			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		logger.info(String.format("No existe un admin coincidente"));
+		return -1;
 		
-		return id;
 	}
 	
 	
@@ -240,26 +252,5 @@ public class GestorBD {
 		return registros;
 	}
 	
-	private List<Crypto> loadCVSComics() {
-		List<Crypto> cryptos = new ArrayList<>();
-		
-		try (BufferedReader in = new BufferedReader(new FileReader(CSV_REGISTROS))) {
-			String linea = null;
-			
-			//Omitir la cabecera
-			in.readLine();			
-			
-			while ((linea = in.readLine()) != null) {
-				if(!cryptos.contains(Crypto.parseCSV(linea))) {
-					cryptos.add(Crypto.parseCSV(linea));
-				}
-			}			
-			
-		} catch (Exception ex) {
-			logger.warning(String.format("Error leyendo comics del CSV: %s", ex.getMessage()));
-		}
-		
-		return cryptos;
-	}
 	
 }

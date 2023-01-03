@@ -9,31 +9,6 @@ public class Admin {
 	private String email;
 	private String passw;
 	
-	public Admin (int id, String nom , String email, String passw) {
-		
-		
-		if(nom == null){
-			throw new NullPointerException("Nom es nulo");
-		}
-		if(passw == null){
-			throw new NullPointerException("Password es nulo");
-		}
-		this.id = id;
-		this.nom = nom;
-		this.passw = passw;
-		
-		Pattern pattern = Pattern.compile("^[A-Za-z0-9+_.-]+@(.+)$");
-		if(email != null && pattern.matcher(email).matches()){
-			this.email = email;
-		}	
-	
-				
-	}
-	public Admin () {
-
-				
-	}
-
 
 	public Integer getId() {
 		return id;
