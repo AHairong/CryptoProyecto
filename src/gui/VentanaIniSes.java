@@ -7,11 +7,19 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
 import java.awt.Font;
+import java.awt.Frame;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.JTextField;
 import javax.swing.JButton;
 
 public class VentanaIniSes extends JFrame {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JTextField textFieldNomUs;
 	private JTextField textFieldPassw;
@@ -72,6 +80,19 @@ public class VentanaIniSes extends JFrame {
 		JButton btnOk = new JButton("Iniciar sesión");
 		btnOk.setBounds(307, 232, 119, 21);
 		contentPane.add(btnOk);
+		
+		btnOk.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				for (Frame frame : Frame.getFrames()) {
+					 frame.setVisible(false);
+			         frame.dispose();
+				}
+				VentanaCliente vc = new VentanaCliente();
+				vc.setVisible(true);
+				
+		   }
+		});
 	}
 
 }

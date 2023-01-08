@@ -1,6 +1,5 @@
 package gui;
 
-import java.awt.Color;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -8,6 +7,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
 import java.awt.Font;
+import java.awt.Frame;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -16,10 +16,14 @@ import javax.swing.JButton;
 
 public class VentanaIniSesAdmin extends JFrame {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JTextField textFieldNomUs;
 	private JTextField textFieldPassw;
-
+	
 	/**
 	 * Launch the application.
 	 */
@@ -27,6 +31,7 @@ public class VentanaIniSesAdmin extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
+					
 					VentanaIniSesAdmin frame = new VentanaIniSesAdmin();
 					frame.setVisible(true);
 				} catch (Exception e) {
@@ -50,7 +55,7 @@ public class VentanaIniSesAdmin extends JFrame {
 		
 		JLabel lblTitulo = new JLabel("Inicio de sesión como usuario");
 		lblTitulo.setFont(new Font("Tahoma", Font.BOLD, 15));
-		lblTitulo.setBounds(22, 23, 162, 19);
+		lblTitulo.setBounds(22, 23, 229, 19);
 		contentPane.add(lblTitulo);
 		
 		JLabel lblNomUs = new JLabel("Nombre de usuario:");
@@ -80,6 +85,12 @@ public class VentanaIniSesAdmin extends JFrame {
 		btnIniSes.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				for (Frame frame : Frame.getFrames()) {
+					 frame.setVisible(false);
+			         frame.dispose();
+				}
+				VentanaAdmin va = new VentanaAdmin();
+				va.setVisible(true);
 				
 		   }
 		});

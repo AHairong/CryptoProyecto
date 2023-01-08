@@ -6,10 +6,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import java.awt.Color;
-import java.awt.Container;
-
 import javax.swing.JLabel;
-import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -19,8 +16,12 @@ import javax.swing.JButton;
 
 public class VentanaPrincipal extends JFrame {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private JPanel contentPane, panelMain;
-	private static VentanaPrincipal instance;
+	
 	
 
 	/**
@@ -45,8 +46,9 @@ public class VentanaPrincipal extends JFrame {
 	 */
 	public VentanaPrincipal() {
 		
+		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 1134, 842);
+		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(255, 255, 255));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -56,7 +58,7 @@ public class VentanaPrincipal extends JFrame {
 		
 		panelMain = new JPanel();
 		panelMain.setBackground(new Color(255, 255, 255));
-		panelMain.setBounds(0, 0, 1314, 883);
+		panelMain.setBounds(0, 10, 1052, 817);
 		contentPane.add(panelMain);
 		panelMain.setLayout(null);
 		
@@ -70,10 +72,10 @@ public class VentanaPrincipal extends JFrame {
 		lblTitulo.setForeground(new Color(255, 255, 255));
 		lblTitulo.setBackground(new Color(255, 128, 128));
 		lblTitulo.setFont(new Font("Tahoma", Font.BOLD, 25));
-		lblTitulo.setBounds(20, 15, 167, 58);
+		lblTitulo.setBounds(20, 10, 167, 58);
 		panelMenu.add(lblTitulo);
 		
-		JMenuItem mntmAdmin = new JMenuItem("Administrdor");
+		JMenuItem mntmAdmin = new JMenuItem("Administrador");
 		mntmAdmin.setBackground(new Color(255, 128, 128));
 		mntmAdmin.setFont(new Font("Segoe UI", Font.PLAIN, 15));
 		mntmAdmin.setForeground(new Color(255, 255, 255));
@@ -126,24 +128,12 @@ public class VentanaPrincipal extends JFrame {
 			}
 			
 		});
+		
 
 	}
 	
-
-	public static VentanaPrincipal getInstance() {
-	  if (instance == null) {
-	    instance = new VentanaPrincipal();
-	  }
-	  return instance;
-	}
 	
-	public void setPanelMain(JPanel panel) {
-		  panelMain = panel;
-		}
-
-		public JPanel getPanelMain() {
-		  return panelMain;
-		}
+		 
 	
 	
 }

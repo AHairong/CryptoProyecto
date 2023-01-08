@@ -15,6 +15,10 @@ import java.awt.event.ActionEvent;
 
 public class VentanaCrearUs extends JFrame {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JTextField textFieldNom;
 	private JTextField textFieldEmail;
@@ -89,5 +93,15 @@ public class VentanaCrearUs extends JFrame {
 		});
 		btnConfCrear.setBounds(288, 232, 115, 21);
 		contentPane.add(btnConfCrear);
+		
+		btnConfCrear.addActionListener(new ActionListener(){
+
+			@Override
+		public void actionPerformed(ActionEvent e) {
+			setVisible(false);
+			dispose();
+			
+			}
+		});
 	}
 }
